@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: chatbot
+    runtime: docker
+    envVars:
+      - key: NLP_PROVIDER
+        value: rag
+      - key: REDIS_URL
+        fromService:
+          name: chatbot-redis
+          type: redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "0"
+
+  - type: redis
+    name: chatbot-redis
+    plan: free
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: []
