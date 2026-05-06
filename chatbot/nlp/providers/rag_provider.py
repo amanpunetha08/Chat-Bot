@@ -1,20 +1,29 @@
 from chatbot.nlp.providers.base import BaseProvider
-from chatbot.knowledge.rag import retrieve_context, build_rag_prompt
+from chatbot.nlp.providers.rule_based import RuleBasedProvider
 from chatbot.knowledge import vectorstore
+
+RELEVANCE_THRESHOLD = 1.6
 
 
 class RAGProvider(BaseProvider):
-    """Answers from knowledge base. Falls back to a simple message if no context found."""
+    """Answers from knowledge base. Falls back to rule-based for greetings/small talk."""
 
-    RELEVANCE_THRESHOLD = 1.7  # ChromaDB L2 distance; lower = more similar
+    def __init__(self):
+        self.rule_based = RuleBasedProvider()
 
     def process(self, message, context=None):
+        # Try rule-based first for greetings/small talk
+        rule_result = self.rule_based.process(message, context)
+        if rule_result["intent"] != "unknown":
+            return rule_result
+
+        # Then try knowledge base
         if vectorstore.count() == 0:
-            return {"intent": "no_knowledge", "confidence": 0.0, "response": "Knowledge base is empty. Please index some documents first."}
+            return rule_result
 
         results = vectorstore.search(message, top_k=3)
-        if not results or results[0]["distance"] > self.RELEVANCE_THRESHOLD:
-            return {"intent": "unknown", "confidence": 0.0, "response": "I don't have information about that in my knowledge base."}
+        if not results or results[0]["distance"] > RELEVANCE_THRESHOLD:
+            return {"intent": "unknown", "confidence": 0.0, "response": "I don't have information about that in my knowledge base. Try asking about Aman's skills, experience, or projects!"}
 
         best = results[0]["content"]
         return {
