@@ -12,5 +12,11 @@ def get_provider():
     if name == "gemini":
         from chatbot.nlp.providers.gemini_provider import GeminiRAGProvider
         return GeminiRAGProvider()
+    if name == "grok":
+        from chatbot.nlp.providers.grok_provider import GrokRAGProvider
+        return GrokRAGProvider()
+    if name == "groq":
+        from chatbot.nlp.providers.groq_provider import GroqRAGProvider
+        return GroqRAGProvider()
     from chatbot.nlp.providers.rule_based import RuleBasedProvider
     return RuleBasedProvider()

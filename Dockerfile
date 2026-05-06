@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set environment
-ENV NLP_PROVIDER=gemini
+ENV NLP_PROVIDER=groq
 ENV KNOWLEDGE_BASE_DIR=/app/knowledge_base
 ENV DEBUG=0
 

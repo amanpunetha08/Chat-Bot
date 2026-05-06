@@ -43,3 +43,9 @@ EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
 
 # Gemini
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+
+# Grok (xAI)
+GROK_API_KEY = os.environ.get("GROK_API_KEY", "")
+
+# Groq (fast LLM inference)
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
