@@ -1,0 +1,21 @@
+Product Information
+===================
+
+Premium Plan - $29/month
+- Unlimited projects
+- Priority support
+- Custom integrations
+- 100GB storage
+
+Basic Plan - $9/month
+- 5 projects
+- Email support
+- 10GB storage
+
+Enterprise Plan - Custom pricing
+- Unlimited everything
+- Dedicated account manager
+- SLA guarantee
+- On-premise deployment option
+
+All plans include a 14-day free trial. No credit card required to start.
