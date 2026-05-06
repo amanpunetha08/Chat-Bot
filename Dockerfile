@@ -7,6 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Set NLP provider to RAG
+ENV NLP_PROVIDER=rag
+
 # Pre-download embedding model and index knowledge base during build
 RUN python manage.py index_knowledge --reset
 
