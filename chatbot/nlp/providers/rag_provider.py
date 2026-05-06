@@ -6,7 +6,7 @@ from chatbot.knowledge import vectorstore
 class RAGProvider(BaseProvider):
     """Answers from knowledge base. Falls back to a simple message if no context found."""
 
-    RELEVANCE_THRESHOLD = 0.85  # ChromaDB L2 distance; lower = more similar
+    RELEVANCE_THRESHOLD = 1.7  # ChromaDB L2 distance; lower = more similar
 
     def process(self, message, context=None):
         if vectorstore.count() == 0:
