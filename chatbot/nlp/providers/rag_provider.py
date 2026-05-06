@@ -1,8 +1,8 @@
 from chatbot.nlp.providers.base import BaseProvider
 from chatbot.knowledge import vectorstore
 
-RELEVANCE_THRESHOLD = 1.6
-SHORT_MESSAGE_THRESHOLD = 1.3  # Stricter threshold for very short messages
+RELEVANCE_THRESHOLD = 1.8
+SHORT_MESSAGE_THRESHOLD = 1.5  # Stricter threshold for very short messages
 
 
 class RAGProvider(BaseProvider):
