@@ -40,3 +40,6 @@ OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-3.5-turbo")
 # Knowledge Base (RAG)
 KNOWLEDGE_BASE_DIR = os.environ.get("KNOWLEDGE_BASE_DIR", str(BASE_DIR / "knowledge_base"))
 EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+
+# Gemini
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
